@@ -70,21 +70,66 @@ body {
     transform: scale(1.03);
 }
 
+/* Post Header */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-header h3 {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Follow Button */
+.follow-btn {
+    background: #48cae4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.follow-btn:hover {
+    background: #0077b6;
+}
+
 /* Post Image */
 .post img {
     width: 100%;
     border-radius: 10px;
 }
 
-/* Post Username */
-.post h3 {
-    font-size: 18px;
-    margin: 10px 0;
-    color: #333;
-}
-
 /* Post Caption */
 .post p {
     font-size: 16px;
     color: #555;
+    margin: 10px 0;
+}
+
+/* Post Actions */
+.post-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.post-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.post-actions button:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
