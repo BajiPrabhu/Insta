@@ -16,9 +16,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Share Button
     document.querySelectorAll(".share-btn").forEach(button => {
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (event) => {
             let shareOptions = button.nextElementSibling;
-            shareOptions.style.display = shareOptions.style.display === "flex" ? "none" : "flex";
+
+            // Toggle Share Menu
+            let isVisible = shareOptions.style.display === "flex";
+            document.querySelectorAll(".share-options").forEach(menu => menu.style.display = "none");
+            shareOptions.style.display = isVisible ? "none" : "flex";
+
+            // Prevent click event from closing immediately
+            event.stopPropagation();
+        });
+    });
+
+    // Close Share Menu when clicking anywhere outside
+    document.addEventListener("click", (event) => {
+        if (!event.target.closest(".share-btn") && !event.target.closest(".share-options")) {
+            document.querySelectorAll(".share-options").forEach(menu => menu.style.display = "none");
+        }
+    });
+
+    // Close Share Menu after clicking a share option
+    document.querySelectorAll(".share-options button").forEach(option => {
+        option.addEventListener("click", () => {
+            document.querySelectorAll(".share-options").forEach(menu => menu.style.display = "none");
         });
     });
 
