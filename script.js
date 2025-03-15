@@ -57,3 +57,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+// Existing JavaScript remains here...
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Handle Login Form Submission
+    document.getElementById("login-form")?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Logged in successfully!");
+        window.location.href = "index.html"; // Redirect to home after login
+    });
+
+    // Handle Signup Form Submission
+    document.getElementById("signup-form")?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Account created! Redirecting to login...");
+        window.location.href = "login.html"; // Redirect to login after signup
+    });
+});
