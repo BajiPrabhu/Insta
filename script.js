@@ -75,38 +75,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 document.addEventListener("DOMContentLoaded", () => {
-    const loggedInUsername = "user123"; // Replace with dynamic username logic
-    const profileUsername = document.querySelector(".profile-info h2").innerText.replace("@", "");
-
-    // Hide Follow Button for Own Profile
-    if (profileUsername === loggedInUsername) {
-        document.querySelector(".follow-btn").style.display = "none";
-    }
-
-    // Follow Button Toggle
-    const followBtn = document.querySelector(".follow-btn");
-    if (followBtn) {
-        followBtn.addEventListener("click", function () {
-            if (this.innerText === "Follow") {
-                this.innerText = "Following ✅";
-                this.style.background = "#0077b6";
+    // Like Button
+    document.querySelectorAll(".like-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            if (!button.classList.contains("liked")) {
+                button.classList.add("liked");
+                button.innerHTML = "❤️ Liked";
             } else {
-                this.innerText = "Follow";
-                this.style.background = "#48cae4";
+                button.classList.remove("liked");
+                button.innerHTML = "❤️ Like";
             }
         });
-    }
-
-    // Edit Profile Button
-    document.querySelector(".edit-profile-btn").addEventListener("click", () => {
-        alert("Edit Profile feature coming soon!");
     });
 
-    // Highlight Active Navbar Link
-    const navLinks = document.querySelectorAll(".nav-links a");
-    navLinks.forEach(link => {
-        if (link.href === window.location.href) {
-            link.classList.add("active");
-        }
+    // Edit Profile Button Click
+    document.querySelector(".edit-profile-btn").addEventListener("click", () => {
+        alert("Profile editing is under development! 🚀");
     });
 });

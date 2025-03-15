@@ -251,39 +251,45 @@ body {
 .auth-links a:hover {
     text-decoration: underline;
 }
-/* Profile Page */
+/* Profile Container */
 .profile-container {
     max-width: 600px;
-    margin: 100px auto;
-    background: #fff;
+    margin: 80px auto;
+    background: #ffffff;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Profile Header */
 .profile-header {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
 .profile-pic {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    margin-right: 20px;
+    border: 3px solid #48cae4;
 }
 
 .profile-info h2 {
+    margin: 0;
     font-size: 22px;
     color: #333;
 }
 
-.profile-info p {
+.follow-info {
+    margin-top: 5px;
     font-size: 14px;
     color: #555;
 }
 
-.follow-btn, .edit-profile-btn {
+/* Edit Profile Button */
+.edit-profile-btn {
+    margin-top: 10px;
     background: #48cae4;
     color: white;
     border: none;
@@ -292,13 +298,13 @@ body {
     cursor: pointer;
     font-weight: 600;
     transition: background 0.3s;
-    margin-top: 10px;
 }
 
-.follow-btn:hover, .edit-profile-btn:hover {
+.edit-profile-btn:hover {
     background: #0077b6;
 }
 
+/* User Posts */
 .user-posts {
     margin-top: 20px;
 }
@@ -306,16 +312,54 @@ body {
 .user-posts h3 {
     font-size: 18px;
     color: #333;
+    margin-bottom: 10px;
 }
 
+/* Post Styles */
 .post {
-    margin-top: 10px;
-    background: #f8f8f8;
-    padding: 10px;
-    border-radius: 8px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.post:hover {
+    transform: scale(1.03);
 }
 
 .post img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 10px;
+}
+
+.post p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* Post Actions */
+.post-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.post-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.post-actions button:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
