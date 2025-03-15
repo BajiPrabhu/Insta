@@ -2,25 +2,36 @@ document.addEventListener("DOMContentLoaded", () => {
     // Like Button
     document.querySelectorAll(".like-btn").forEach(button => {
         button.addEventListener("click", () => {
-            if (!button.classList.contains("liked")) {
-                button.classList.add("liked");
-                button.innerHTML = "❤️ Liked";
-            } else {
-                button.classList.remove("liked");
-                button.innerHTML = "❤️ Like";
-            }
+            button.classList.toggle("liked");
+            button.innerHTML = button.classList.contains("liked") ? "❤️ Liked" : "❤️ Like";
         });
     });
 
     // Follow Button
     document.querySelectorAll(".follow-btn").forEach(button => {
         button.addEventListener("click", () => {
-            if (button.innerHTML === "Follow") {
-                button.innerHTML = "Following ✅";
-                button.style.background = "#0077b6";
-            } else {
-                button.innerHTML = "Follow";
-                button.style.background = "#48cae4";
+            button.innerHTML = button.innerHTML === "Follow" ? "Following ✅" : "Follow";
+        });
+    });
+
+    // Share Button
+    document.querySelectorAll(".share-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            let shareOptions = button.nextElementSibling;
+            shareOptions.style.display = shareOptions.style.display === "flex" ? "none" : "flex";
+        });
+    });
+
+    // Comment Section
+    document.querySelectorAll(".submit-comment").forEach(button => {
+        button.addEventListener("click", () => {
+            let input = button.previousElementSibling;
+            if (input.value.trim()) {
+                let commentBox = button.nextElementSibling;
+                let newComment = document.createElement("p");
+                newComment.textContent = input.value;
+                commentBox.appendChild(newComment);
+                input.value = "";
             }
         });
     });
