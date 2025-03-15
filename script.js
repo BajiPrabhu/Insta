@@ -1,54 +1,49 @@
-/* Comment Box */
-.comment-box {
-    display: none;
-    flex-direction: column;
-    margin-top: 10px;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-.comment-input {
-    padding: 8px;
-    width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
+    // Like Button Toggle
+    document.querySelectorAll(".like-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("liked");
+            button.innerHTML = button.classList.contains("liked") ? "❤️ Liked" : "❤️ Like";
+        });
+    });
 
-.submit-comment {
-    padding: 6px 10px;
-    background: #48cae4;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-}
+    // Follow Button Toggle
+    document.querySelectorAll(".follow-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            button.innerHTML = button.innerHTML === "Follow" ? "Following ✅" : "Follow";
+            button.style.background = button.innerHTML === "Following ✅" ? "#0077b6" : "#48cae4";
+        });
+    });
 
-.submit-comment:hover {
-    background: #0077b6;
-}
+    // Comment Button Toggle
+    document.querySelectorAll(".comment-btn").forEach((button, index) => {
+        button.addEventListener("click", () => {
+            const commentBox = document.querySelectorAll(".comment-box")[index];
+            commentBox.style.display = (commentBox.style.display === "flex") ? "none" : "flex";
+        });
+    });
 
-/* Share Options */
-.share-options {
-    display: none;
-    flex-direction: column;
-    background: #fff;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    // Share Button Toggle
+    document.querySelectorAll(".share-btn").forEach((button, index) => {
+        button.addEventListener("click", () => {
+            const shareOptions = document.querySelectorAll(".share-options")[index];
+            shareOptions.style.display = (shareOptions.style.display === "flex") ? "none" : "flex";
+        });
+    });
 
-.share-options a, .share-options button {
-    text-decoration: none;
-    background: none;
-    border: none;
-    padding: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    text-align: left;
-    color: #0077b6;
-}
+    // Copy Link Function
+    document.querySelectorAll(".copy-link").forEach(button => {
+        button.addEventListener("click", () => {
+            navigator.clipboard.writeText(window.location.href);
+            alert("Link copied to clipboard! 📋");
+        });
+    });
 
-.share-options button:hover, .share-options a:hover {
-    color: #48cae4;
-}
+    // Direct Message (DM) Feature
+    document.querySelectorAll(".dm-share").forEach(button => {
+        button.addEventListener("click", () => {
+            alert("Feature coming soon! 🚀");
+        });
+    });
+});
