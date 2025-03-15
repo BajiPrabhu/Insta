@@ -75,16 +75,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 document.addEventListener("DOMContentLoaded", () => {
-    // Follow Button
-    document.querySelector(".follow-btn").addEventListener("click", function() {
-        if (this.innerText === "Follow") {
-            this.innerText = "Following ✅";
-            this.style.background = "#0077b6";
-        } else {
-            this.innerText = "Follow";
-            this.style.background = "#48cae4";
-        }
-    });
+    const loggedInUsername = "user123"; // Replace with dynamic username logic
+    const profileUsername = document.querySelector(".profile-info h2").innerText.replace("@", "");
+
+    // Hide Follow Button for Own Profile
+    if (profileUsername === loggedInUsername) {
+        document.querySelector(".follow-btn").style.display = "none";
+    }
+
+    // Follow Button Toggle
+    const followBtn = document.querySelector(".follow-btn");
+    if (followBtn) {
+        followBtn.addEventListener("click", function () {
+            if (this.innerText === "Follow") {
+                this.innerText = "Following ✅";
+                this.style.background = "#0077b6";
+            } else {
+                this.innerText = "Follow";
+                this.style.background = "#48cae4";
+            }
+        });
+    }
 
     // Edit Profile Button
     document.querySelector(".edit-profile-btn").addEventListener("click", () => {
