@@ -96,3 +96,62 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set post count dynamically
     document.getElementById("post-count").innerText = document.querySelectorAll(".post-cover").length;
 });
+document.addEventListener("DOMContentLoaded", () => {
+    // Like Button Functionality
+    document.querySelector(".like-btn").addEventListener("click", function() {
+        if (!this.classList.contains("liked")) {
+            this.classList.add("liked");
+            this.innerHTML = "❤️ Liked";
+        } else {
+            this.classList.remove("liked");
+            this.innerHTML = "❤️ Like";
+        }
+    });
+
+    // Comment Posting
+    document.querySelector(".comment-btn").addEventListener("click", function() {
+        let commentInput = document.getElementById("commentInput");
+        let commentText = commentInput.value.trim();
+
+        if (commentText !== "") {
+            let newComment = document.createElement("p");
+            newComment.innerHTML = `<strong>@You:</strong> ${commentText}`;
+            document.querySelector(".comments-list").appendChild(newComment);
+            commentInput.value = "";
+        }
+    });
+
+    // Share Button Toggle
+    let shareBtn = document.querySelector(".share-btn");
+    let shareOptions = document.querySelector(".share-options");
+
+    shareBtn.addEventListener("click", function(event) {
+        event.stopPropagation();
+        shareOptions.classList.toggle("hidden");
+    });
+
+    // Close Share Options When Clicking Outside
+    document.addEventListener("click", function(event) {
+        if (!shareBtn.contains(event.target) && !shareOptions.contains(event.target)) {
+            shareOptions.classList.add("hidden");
+        }
+    });
+
+    // Sharing Functions
+    window.shareTo = function(platform) {
+        let postURL = window.location.href;
+        if (platform === "whatsapp") {
+            window.open(`https://wa.me/?text=${encodeURIComponent(postURL)}`, "_blank");
+        }
+    };
+
+    window.copyLink = function() {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert("Link copied to clipboard!");
+        });
+    };
+
+    window.shareToDM = function() {
+        alert("Feature coming soon! 🚀");
+    };
+});

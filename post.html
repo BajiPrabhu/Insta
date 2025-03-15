@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeShare - Post</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">VibeShare</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="explore.html">Explore</a>
+            <a href="profile.html">Profile</a>
+            <a href="settings.html">Settings</a>
+        </div>
+    </nav>
+
+    <!-- Post Container -->
+    <div class="post-container">
+        <div class="post-details">
+            <img src="https://source.unsplash.com/600x400/?nature" alt="Post Image" class="post-img">
+            <div class="post-info">
+                <h3>@user1</h3>
+                <p>Enjoying this beautiful view! 🌿✨</p>
+                <p class="likes-count">❤️ 120 Likes</p>
+
+                <!-- Like Button -->
+                <button class="like-btn">❤️ Like</button>
+
+                <!-- Comment Section -->
+                <div class="comments-section">
+                    <h4>Comments</h4>
+                    <div class="comments-list">
+                        <p><strong>@alex:</strong> Wow! This looks amazing! 😍</p>
+                        <p><strong>@sophia:</strong> Love this shot! 🌿</p>
+                    </div>
+                    <input type="text" id="commentInput" placeholder="Add a comment...">
+                    <button class="comment-btn">Post</button>
+                </div>
+
+                <!-- Share Button -->
+                <div class="share-section">
+                    <button class="share-btn">🔗 Share</button>
+                    <div class="share-options hidden">
+                        <button onclick="shareTo('whatsapp')">📱 WhatsApp</button>
+                        <button onclick="copyLink()">🔗 Copy Link</button>
+                        <button onclick="shareToDM()">✉️ Direct Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
