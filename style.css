@@ -317,127 +317,68 @@ body {
 .post-grid img:hover {
     transform: scale(1.05);
 }
-/* Post Page */
-.post-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 80px;
-}
-
-.post-details {
-    width: 600px;
+/* Post Creation Page */
+.post-creation-container {
+    width: 50%;
+    margin: 50px auto;
     background: #ffffff;
-    border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.post-img {
-    width: 100%;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.post-info {
-    margin-top: 15px;
-}
-
-.post-info h3 {
-    font-size: 18px;
+h2 {
     color: #333;
 }
 
-.post-info p {
-    font-size: 16px;
-    color: #555;
-}
-
-/* Like Button */
-.like-btn {
-    background: #ff4757;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s;
-}
-
-.like-btn:hover {
-    background: #e84118;
-}
-
-/* Comments Section */
-.comments-section {
-    margin-top: 15px;
-}
-
-.comments-list p {
-    font-size: 14px;
-    color: #333;
-    margin: 5px 0;
-}
-
-#commentInput {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.comment-btn {
-    background: #0077b6;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 5px;
-}
-
-.comment-btn:hover {
-    background: #005f8b;
-}
-
-/* Share Button */
-.share-btn {
+.upload-label {
+    display: block;
     background: #48cae4;
     color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: 600;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
-.share-btn:hover {
-    background: #0077b6;
-}
-
-/* Share Options */
-.share-options {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-}
-
-.share-options.hidden {
+#imageUpload, #musicUpload {
     display: none;
 }
 
-.share-options button {
-    background: #ddd;
-    border: none;
-    padding: 8px;
-    border-radius: 5px;
-    cursor: pointer;
+.image-preview {
+    margin-top: 15px;
 }
 
-.share-options button:hover {
-    background: #bbb;
+.image-preview img {
+    width: 100%;
+    border-radius: 10px;
+    max-height: 300px;
+}
+
+.hidden {
+    display: none;
+}
+
+textarea, input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#postButton {
+    background: #ff4757;
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#postButton:hover {
+    background: #e84118;
 }

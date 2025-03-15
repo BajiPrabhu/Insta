@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post - VibeShare</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">VibeShare</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="explore.html">Explore</a>
+            <a href="profile.html">Profile</a>
+            <a href="settings.html">Settings</a>
+        </div>
+    </nav>
+
+    <!-- Post Creation Section -->
+    <div class="post-creation-container">
+        <h2>Create a New Post</h2>
+
+        <!-- Image Upload -->
+        <label for="imageUpload" class="upload-label">📷 Upload Image</label>
+        <input type="file" id="imageUpload" accept="image/*">
+
+        <div class="image-preview hidden">
+            <img id="previewImage" src="" alt="Preview">
+        </div>
+
+        <!-- Caption -->
+        <textarea id="captionInput" placeholder="Write a caption..."></textarea>
+
+        <!-- Add Music -->
+        <label for="musicUpload">🎵 Add Music (Optional)</label>
+        <input type="file" id="musicUpload" accept="audio/*">
+
+        <!-- Tag People -->
+        <label for="tagPeople">🏷️ Tag Friends</label>
+        <input type="text" id="tagPeople" placeholder="@username">
+
+        <!-- Add Collaborator -->
+        <label for="collaborator">🤝 Add Collaborator</label>
+        <input type="text" id="collaborator" placeholder="@username">
+
+        <!-- Location -->
+        <label for="locationInput">📍 Add Location</label>
+        <input type="text" id="locationInput" placeholder="Enter location">
+
+        <!-- Post Button -->
+        <button id="postButton">🚀 Share Post</button>
+    </div>
+
+</body>
+</html>

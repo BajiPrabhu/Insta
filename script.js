@@ -97,61 +97,47 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("post-count").innerText = document.querySelectorAll(".post-cover").length;
 });
 document.addEventListener("DOMContentLoaded", () => {
-    // Like Button Functionality
-    document.querySelector(".like-btn").addEventListener("click", function() {
-        if (!this.classList.contains("liked")) {
-            this.classList.add("liked");
-            this.innerHTML = "❤️ Liked";
-        } else {
-            this.classList.remove("liked");
-            this.innerHTML = "❤️ Like";
+    // Image Preview
+    let imageUpload = document.getElementById("imageUpload");
+    let previewImage = document.getElementById("previewImage");
+    let imagePreviewContainer = document.querySelector(".image-preview");
+
+    imageUpload.addEventListener("change", function(event) {
+        let file = event.target.files[0];
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                imagePreviewContainer.classList.remove("hidden");
+            };
+            reader.readAsDataURL(file);
         }
     });
 
-    // Comment Posting
-    document.querySelector(".comment-btn").addEventListener("click", function() {
-        let commentInput = document.getElementById("commentInput");
-        let commentText = commentInput.value.trim();
+    // Posting Functionality
+    document.getElementById("postButton").addEventListener("click", function() {
+        let caption = document.getElementById("captionInput").value;
+        let tagPeople = document.getElementById("tagPeople").value;
+        let collaborator = document.getElementById("collaborator").value;
+        let location = document.getElementById("locationInput").value;
+        let imageSrc = previewImage.src;
 
-        if (commentText !== "") {
-            let newComment = document.createElement("p");
-            newComment.innerHTML = `<strong>@You:</strong> ${commentText}`;
-            document.querySelector(".comments-list").appendChild(newComment);
-            commentInput.value = "";
+        if (!imageSrc) {
+            alert("Please upload an image to post!");
+            return;
         }
-    });
 
-    // Share Button Toggle
-    let shareBtn = document.querySelector(".share-btn");
-    let shareOptions = document.querySelector(".share-options");
-
-    shareBtn.addEventListener("click", function(event) {
-        event.stopPropagation();
-        shareOptions.classList.toggle("hidden");
-    });
-
-    // Close Share Options When Clicking Outside
-    document.addEventListener("click", function(event) {
-        if (!shareBtn.contains(event.target) && !shareOptions.contains(event.target)) {
-            shareOptions.classList.add("hidden");
-        }
-    });
-
-    // Sharing Functions
-    window.shareTo = function(platform) {
-        let postURL = window.location.href;
-        if (platform === "whatsapp") {
-            window.open(`https://wa.me/?text=${encodeURIComponent(postURL)}`, "_blank");
-        }
-    };
-
-    window.copyLink = function() {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            alert("Link copied to clipboard!");
+        // Simulating Post Upload (Can be replaced with database logic)
+        alert("🎉 Post Shared Successfully!");
+        console.log({
+            image: imageSrc,
+            caption: caption,
+            tags: tagPeople,
+            collaborator: collaborator,
+            location: location
         });
-    };
 
-    window.shareToDM = function() {
-        alert("Feature coming soon! 🚀");
-    };
+        // Redirect to Profile Page
+        window.location.href = "profile.html";
+    });
 });
