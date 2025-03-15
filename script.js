@@ -74,3 +74,28 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "login.html"; // Redirect to login after signup
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    // Follow Button
+    document.querySelector(".follow-btn").addEventListener("click", function() {
+        if (this.innerText === "Follow") {
+            this.innerText = "Following ✅";
+            this.style.background = "#0077b6";
+        } else {
+            this.innerText = "Follow";
+            this.style.background = "#48cae4";
+        }
+    });
+
+    // Edit Profile Button
+    document.querySelector(".edit-profile-btn").addEventListener("click", () => {
+        alert("Edit Profile feature coming soon!");
+    });
+
+    // Highlight Active Navbar Link
+    const navLinks = document.querySelectorAll(".nav-links a");
+    navLinks.forEach(link => {
+        if (link.href === window.location.href) {
+            link.classList.add("active");
+        }
+    });
+});
