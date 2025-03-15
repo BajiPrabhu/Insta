@@ -92,4 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".edit-profile-btn").addEventListener("click", () => {
         alert("Profile editing is under development! 🚀");
     });
+
+    // Set post count dynamically
+    document.getElementById("post-count").innerText = document.querySelectorAll(".post-cover").length;
 });
