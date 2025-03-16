@@ -1,22 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Like Button Functionality
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("JavaScript Loaded Successfully!");
+
+    // ---------------- LIKE BUTTON ---------------- //
     document.querySelectorAll(".like-btn").forEach(button => {
         button.addEventListener("click", () => {
-            button.classList.toggle("liked");
-            button.innerHTML = button.classList.contains("liked") ? "❤️ Liked" : "❤️ Like";
+            if (!button.classList.contains("liked")) {
+                button.classList.add("liked");
+                button.innerHTML = "❤️ Liked";
+            } else {
+                button.classList.remove("liked");
+                button.innerHTML = "❤️ Like";
+            }
         });
     });
 
-    // Comment Button Functionality
-    document.querySelectorAll(".comment-btn").forEach(button => {
-        button.addEventListener("click", (e) => {
-            let post = e.target.closest(".post");
-            let commentSection = post.querySelector(".comment-section");
-            commentSection.style.display = commentSection.style.display === "block" ? "none" : "block";
-        });
-    });
-
-    // Follow Button Functionality
+    // ---------------- FOLLOW BUTTON ---------------- //
     document.querySelectorAll(".follow-btn").forEach(button => {
         button.addEventListener("click", () => {
             if (button.innerHTML === "Follow") {
@@ -29,122 +27,124 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Share Button (Popup)
-    document.querySelectorAll(".share-btn").forEach(button => {
-        button.addEventListener("click", () => {
-            alert("Share options coming soon!");
+    // ---------------- COMMENT SECTION TOGGLE ---------------- //
+    document.querySelectorAll(".comment-btn").forEach(button => {
+        button.addEventListener("click", (e) => {
+            let post = e.target.closest(".post");
+            let commentSection = post.querySelector(".comment-section");
+            commentSection.style.display = commentSection.style.display === "block" ? "none" : "block";
         });
     });
 
-    // Login Form Handling
+    // ---------------- FIXED SHARE BUTTON ---------------- //
+    document.querySelectorAll(".share-btn").forEach(button => {
+        button.addEventListener("click", function(event) {
+            event.stopPropagation(); // Prevent immediate closing when clicking the button
+
+            let post = event.target.closest(".post");
+            let shareOptions = post.querySelector(".share-options");
+
+            // Close any open share menus before opening the new one
+            document.querySelectorAll(".share-options").forEach(menu => {
+                if (menu !== shareOptions) {
+                    menu.style.display = "none";
+                }
+            });
+
+            // Toggle share options for the clicked post
+            if (shareOptions.style.display === "block") {
+                shareOptions.style.display = "none";
+            } else {
+                shareOptions.style.display = "block";
+            }
+        });
+    });
+
+    // Close share menu when clicking outside
+    document.addEventListener("click", function(event) {
+        document.querySelectorAll(".share-options").forEach(menu => {
+            if (!menu.contains(event.target) && !event.target.classList.contains("share-btn")) {
+                menu.style.display = "none";
+            }
+        });
+    });
+
+    // ---------------- LOGIN FORM HANDLING ---------------- //
     document.getElementById("login-form")?.addEventListener("submit", (e) => {
         e.preventDefault();
         alert("Logged in successfully!");
         window.location.href = "index.html";
     });
 
-    // Signup Form Handling
+    // ---------------- SIGNUP FORM HANDLING ---------------- //
     document.getElementById("signup-form")?.addEventListener("submit", (e) => {
         e.preventDefault();
         alert("Account created! Redirecting to login...");
         window.location.href = "login.html";
     });
 
-    // Edit Profile Button
-    document.querySelector(".edit-profile-btn")?.addEventListener("click", () => {
-        alert("Profile editing is under development! 🚀");
-    });
+    // ---------------- EDIT PROFILE BUTTON ---------------- //
+    let editProfileBtn = document.querySelector(".edit-profile-btn");
+    if (editProfileBtn) {
+        editProfileBtn.addEventListener("click", () => {
+            alert("Profile editing is under development! 🚀");
+        });
+    }
 
-    // Set Post Count Dynamically
-    document.getElementById("post-count")?.innerText = document.querySelectorAll(".post-cover").length;
+    // ---------------- DYNAMIC POST COUNT ---------------- //
+    let postCount = document.getElementById("post-count");
+    if (postCount) {
+        postCount.innerText = document.querySelectorAll(".post-cover").length;
+    }
 
-    // Image Preview for Creating a Post
+    // ---------------- CREATE POST PAGE - IMAGE PREVIEW ---------------- //
     let imageUpload = document.getElementById("imageUpload");
     let previewImage = document.getElementById("previewImage");
     let imagePreviewContainer = document.querySelector(".image-preview");
 
-    imageUpload?.addEventListener("change", function(event) {
-        let file = event.target.files[0];
-        if (file) {
-            let reader = new FileReader();
-            reader.onload = function(e) {
-                previewImage.src = e.target.result;
-                imagePreviewContainer.classList.remove("hidden");
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // Post Submission Handling
-    const postBtn = document.getElementById("post-btn");
-    postBtn?.addEventListener("click", () => {
-        const caption = document.getElementById("caption").value.trim();
-        const image = document.getElementById("post-image").files[0];
-
-        if (!image) {
-            alert("Please upload an image to post.");
-            return;
-        }
-
-        alert("Post created successfully!");
-    });
-
-    // Music Search Functionality
-    const musicInput = document.getElementById("music-search");
-    const musicResults = document.getElementById("music-results");
-
-    musicInput?.addEventListener("input", () => {
-        const query = musicInput.value.trim();
-        if (query.length > 2) {
-            // Simulate search results
-            musicResults.innerHTML = `<p>🎵 ${query} - Sample Artist</p>`;
-            musicResults.style.display = "block";
-        } else {
-            musicResults.style.display = "none";
-        }
-    });
-
-    // Profile Page Tabs (Posts, Tagged, Saved)
-    document.querySelectorAll(".profile-tab").forEach(tab => {
-        tab.addEventListener("click", function() {
-            document.querySelectorAll(".profile-tab").forEach(t => t.classList.remove("active"));
-            this.classList.add("active");
-
-            let tabContent = this.getAttribute("data-tab");
-            document.querySelectorAll(".profile-content").forEach(content => {
-                content.style.display = content.getAttribute("id") === tabContent ? "block" : "none";
-            });
+    if (imageUpload) {
+        imageUpload.addEventListener("change", function(event) {
+            let file = event.target.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    imagePreviewContainer.classList.remove("hidden");
+                };
+                reader.readAsDataURL(file);
+            }
         });
-    });
+    }
 
-    // Notification Dropdown
-    document.getElementById("notification-icon")?.addEventListener("click", () => {
-        let dropdown = document.getElementById("notification-dropdown");
-        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-    });
+    // ---------------- CREATE POST PAGE - POST FUNCTION ---------------- //
+    let postBtn = document.getElementById("post-btn");
+    if (postBtn) {
+        postBtn.addEventListener("click", () => {
+            let caption = document.getElementById("caption").value.trim();
+            let image = document.getElementById("post-image").files[0];
 
-    // Settings Toggle in Profile
-    document.getElementById("settings-btn")?.addEventListener("click", () => {
-        let settingsPanel = document.getElementById("settings-panel");
-        settingsPanel.style.display = settingsPanel.style.display === "block" ? "none" : "block";
-    });
+            if (!image) {
+                alert("Please upload an image to post.");
+                return;
+            }
 
-    // Collapsible Sidebar for Small Screens
-    document.getElementById("menu-toggle")?.addEventListener("click", () => {
-        let sidebar = document.getElementById("sidebar");
-        sidebar.classList.toggle("collapsed");
-    });
-
-    // Save Post Functionality
-    document.querySelectorAll(".save-post-btn").forEach(button => {
-        button.addEventListener("click", () => {
-            button.classList.toggle("saved");
-            button.innerHTML = button.classList.contains("saved") ? "💾 Saved" : "💾 Save";
+            alert("Post created successfully!");
         });
-    });
+    }
 
-    // Dark Mode Toggle
-    document.getElementById("dark-mode-toggle")?.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-    });
+    // ---------------- MUSIC SEARCH FUNCTION ---------------- //
+    let musicInput = document.getElementById("music-search");
+    let musicResults = document.getElementById("music-results");
+
+    if (musicInput) {
+        musicInput.addEventListener("input", () => {
+            let query = musicInput.value.trim();
+            if (query.length > 2) {
+                musicResults.innerHTML = `<p>🎵 ${query} - Sample Artist</p>`;
+                musicResults.style.display = "block";
+            } else {
+                musicResults.style.display = "none";
+            }
+        });
+    }
 });
