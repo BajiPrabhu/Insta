@@ -298,87 +298,58 @@ body {
 }
 
 /* My Posts Grid */
-.my-posts {
-    margin-top: 20px;
-}
-
-.post-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-.post-grid img {
-    width: 100%;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.post-grid img:hover {
-    transform: scale(1.05);
-}
-/* Post Creation Page */
-.post-creation-container {
-    width: 50%;
-    margin: 50px auto;
-    background: #ffffff;
+.create-post-container {
+    width: 400px;
+    margin: 100px auto;
+    background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.create-post-container h2 {
     text-align: center;
+    margin-bottom: 15px;
 }
 
-h2 {
-    color: #333;
+.upload-section, 
+.caption-section, 
+.music-section, 
+.tag-section, 
+.collaborator-section, 
+.location-section {
+    margin-bottom: 15px;
 }
 
-.upload-label {
-    display: block;
-    background: #48cae4;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px 0;
-}
-
-#imageUpload, #musicUpload {
-    display: none;
-}
-
-.image-preview {
-    margin-top: 15px;
-}
-
-.image-preview img {
-    width: 100%;
-    border-radius: 10px;
-    max-height: 300px;
-}
-
-.hidden {
-    display: none;
-}
-
-textarea, input {
+input, textarea {
     width: 100%;
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-#postButton {
-    background: #ff4757;
+#post-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #0077b6;
     color: white;
     border: none;
-    padding: 12px 15px;
-    border-radius: 8px;
-    font-weight: bold;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    font-size: 16px;
 }
 
-#postButton:hover {
-    background: #e84118;
+#post-btn:hover {
+    background-color: #005f8a;
+}
+
+#music-results {
+    margin-top: 5px;
+    max-height: 100px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    border-radius: 5px;
+    padding: 5px;
+    display: none;
 }

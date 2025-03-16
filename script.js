@@ -115,29 +115,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Posting Functionality
-    document.getElementById("postButton").addEventListener("click", function() {
-        let caption = document.getElementById("captionInput").value;
-        let tagPeople = document.getElementById("tagPeople").value;
-        let collaborator = document.getElementById("collaborator").value;
-        let location = document.getElementById("locationInput").value;
-        let imageSrc = previewImage.src;
-
-        if (!imageSrc) {
-            alert("Please upload an image to post!");
-            return;
-        }
-
-        // Simulating Post Upload (Can be replaced with database logic)
-        alert("🎉 Post Shared Successfully!");
-        console.log({
-            image: imageSrc,
-            caption: caption,
-            tags: tagPeople,
-            collaborator: collaborator,
-            location: location
+    document.addEventListener("DOMContentLoaded", () => {
+        const postBtn = document.getElementById("post-btn");
+    
+        postBtn.addEventListener("click", () => {
+            const caption = document.getElementById("caption").value.trim();
+            const image = document.getElementById("post-image").files[0];
+    
+            if (!image) {
+                alert("Please upload an image to post.");
+                return;
+            }
+    
+            alert("Post created successfully!");
         });
-
-        // Redirect to Profile Page
-        window.location.href = "profile.html";
+    
+        // Music Search Functionality
+        const musicInput = document.getElementById("music-search");
+        const musicResults = document.getElementById("music-results");
+    
+        musicInput.addEventListener("input", () => {
+            const query = musicInput.value.trim();
+            if (query.length > 2) {
+                // Simulate search results
+                musicResults.innerHTML = `<p>🎵 ${query} - Sample Artist</p>`;
+                musicResults.style.display = "block";
+            } else {
+                musicResults.style.display = "none";
+            }
+        });
     });
-});
+    

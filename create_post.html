@@ -20,39 +20,49 @@
         </div>
     </nav>
 
-    <!-- Post Creation Section -->
-    <div class="post-creation-container">
+    <!-- Create Post Section -->
+    <div class="create-post-container">
         <h2>Create a New Post</h2>
-
-        <!-- Image Upload -->
-        <label for="imageUpload" class="upload-label">📷 Upload Image</label>
-        <input type="file" id="imageUpload" accept="image/*">
-
-        <div class="image-preview hidden">
-            <img id="previewImage" src="" alt="Preview">
+        
+        <!-- Upload Image -->
+        <div class="upload-section">
+            <label for="post-image">Upload Image:</label>
+            <input type="file" id="post-image" accept="image/*">
         </div>
 
         <!-- Caption -->
-        <textarea id="captionInput" placeholder="Write a caption..."></textarea>
+        <div class="caption-section">
+            <label for="caption">Caption:</label>
+            <textarea id="caption" placeholder="Write a caption..."></textarea>
+        </div>
 
-        <!-- Add Music -->
-        <label for="musicUpload">🎵 Add Music (Optional)</label>
-        <input type="file" id="musicUpload" accept="audio/*">
+        <!-- Music Search Box -->
+        <div class="music-section">
+            <label for="music-search">Add Music (Optional):</label>
+            <input type="text" id="music-search" placeholder="Search for music...">
+            <div id="music-results"></div> <!-- This will show search results -->
+        </div>
 
-        <!-- Tag People -->
-        <label for="tagPeople">🏷️ Tag Friends</label>
-        <input type="text" id="tagPeople" placeholder="@username">
+        <!-- Tag Friends -->
+        <div class="tag-section">
+            <label for="tag-friends">Tag Friends (Optional):</label>
+            <input type="text" id="tag-friends" placeholder="Tag friends...">
+        </div>
 
-        <!-- Add Collaborator -->
-        <label for="collaborator">🤝 Add Collaborator</label>
-        <input type="text" id="collaborator" placeholder="@username">
+        <!-- Collaborator -->
+        <div class="collaborator-section">
+            <label for="collaborator">Add Collaborator (Optional):</label>
+            <input type="text" id="collaborator" placeholder="Add a collaborator...">
+        </div>
 
         <!-- Location -->
-        <label for="locationInput">📍 Add Location</label>
-        <input type="text" id="locationInput" placeholder="Enter location">
+        <div class="location-section">
+            <label for="location">Add Location (Optional):</label>
+            <input type="text" id="location" placeholder="Enter location...">
+        </div>
 
-        <!-- Post Button -->
-        <button id="postButton">🚀 Share Post</button>
+        <!-- Submit Button -->
+        <button id="post-btn">Post</button>
     </div>
 
 </body>
