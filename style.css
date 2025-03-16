@@ -1,4 +1,5 @@
 /* Reset Styles */
+/* Reset Styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +9,7 @@
 
 /* Body */
 body {
-    background-color: #f4f4f4;
+    background-color: #fafafa;
 }
 
 /* Navbar */
@@ -56,7 +57,7 @@ body {
 
 /* Post Box */
 .post {
-    width: 400px;
+    width: 450px;
     background: #ffffff;
     border-radius: 12px;
     overflow: hidden;
@@ -64,7 +65,6 @@ body {
     margin-bottom: 20px;
     padding: 15px;
     transition: transform 0.3s ease;
-    position: relative;
 }
 
 .post:hover {
@@ -135,60 +135,24 @@ body {
     background: rgba(0, 0, 0, 0.1);
 }
 
-/* Share Options */
-.share-options {
-    display: none;
-    flex-direction: column;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 30px;
-    right: 10px;
-    padding: 10px;
-    z-index: 10;
-}
-
-.share-options button {
-    background: none;
-    border: none;
-    padding: 8px 12px;
-    text-align: left;
-    cursor: pointer;
-    font-size: 14px;
-    width: 100%;
-    border-radius: 6px;
-    transition: background 0.3s ease;
-}
-
-.share-options button:hover {
-    background: #f1f1f1;
-}
-
-/* Comment Section */
+/* Comments Section */
 .comment-section {
+    display: none;
     margin-top: 10px;
 }
 
-.comment-input {
-    width: 80%;
+.comment-section input {
+    width: 100%;
     padding: 8px;
+    margin-bottom: 5px;
     border: 1px solid #ccc;
     border-radius: 6px;
 }
 
-.submit-comment {
-    padding: 8px;
-    border: none;
-    background: #48cae4;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.comments {
+.comments-list {
     margin-top: 10px;
 }
+
 /* Existing styles remain here... */
 
 /* Auth Container (For Login & Signup Pages) */
