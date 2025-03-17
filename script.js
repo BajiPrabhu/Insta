@@ -37,35 +37,34 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // ---------------- FIXED SHARE BUTTON ---------------- //
-    document.querySelectorAll(".share-btn").forEach(button => {
-        button.addEventListener("click", function(event) {
-            event.stopPropagation(); // Prevent immediate closing when clicking the button
+    document.addEventListener("click", (event) => {
+        const clickedElement = event.target;
 
-            let post = event.target.closest(".post");
+        if (clickedElement.classList.contains("share-btn")) {
+            let post = clickedElement.closest(".post");
             let shareOptions = post.querySelector(".share-options");
 
-            // Close any open share menus before opening the new one
+            // Hide all other share menus
             document.querySelectorAll(".share-options").forEach(menu => {
                 if (menu !== shareOptions) {
                     menu.style.display = "none";
                 }
             });
 
-            // Toggle share options for the clicked post
-            if (shareOptions.style.display === "block") {
-                shareOptions.style.display = "none";
-            } else {
-                shareOptions.style.display = "block";
-            }
-        });
+            // Toggle Share Menu
+            shareOptions.style.display = (shareOptions.style.display === "flex") ? "none" : "flex";
+            event.stopPropagation();
+        } else if (!clickedElement.closest(".share-options")) {
+            document.querySelectorAll(".share-options").forEach(menu => menu.style.display = "none");
+        }
     });
 
-    // Close share menu when clicking outside
-    document.addEventListener("click", function(event) {
-        document.querySelectorAll(".share-options").forEach(menu => {
-            if (!menu.contains(event.target) && !event.target.classList.contains("share-btn")) {
-                menu.style.display = "none";
-            }
+    // Close Share Menu after clicking a share option
+    document.querySelectorAll(".share-options button").forEach(option => {
+        option.addEventListener("click", (e) => {
+            let post = e.target.closest(".post");
+            let shareOptions = post.querySelector(".share-options");
+            shareOptions.style.display = "none";
         });
     });
 
